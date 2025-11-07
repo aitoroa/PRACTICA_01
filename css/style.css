@@ -243,6 +243,13 @@ header.is-scrolled {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
+#programa,
+#artistas,
+#entradas,
+#recuerdos {
+  margin-top: 5rem;
+}
+
 .program-grid {
   max-width: 1100px;
   margin: 0 auto;
@@ -300,33 +307,105 @@ header.is-scrolled {
   letter-spacing: 0.5px;
 }
 
-.artists-carousel {
-  max-width: 1200px;
+.artistas-slideshow .slideshow-container {
+  position: relative;
+  max-width: 900px;
   margin: 0 auto;
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding: 0 1rem 1rem;
-  scroll-snap-type: x mandatory;
-}
-.artist-card {
-  scroll-snap-align: start;
-  background: #0f0f0f;
-  border: 1px solid #242424;
   border-radius: 16px;
   overflow: hidden;
-  min-width: clamp(220px, 34vw, 340px);
 }
-.artist-photo {
-  aspect-ratio: 3 / 4;
-  background: linear-gradient(135deg, #1f1f1f, #0f0f0f);
-  border-bottom: 1px solid #242424;
+
+.artistas-slideshow .viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
-.artist-name {
+
+.artistas-slideshow .mySlides {
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+.artistas-slideshow .mySlides img {
+  width: 100%;
+  height: 70vh;
+  max-height: 680px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.artistas-slideshow .caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.8rem 1rem;
   text-align: center;
-  padding: 0.7rem 1rem;
-  font-weight: 800;
   color: var(--text-color);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.artistas-slideshow .prev,
+.artistas-slideshow .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.6rem 0.8rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.6rem;
+  user-select: none;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+}
+.artistas-slideshow .prev {
+  left: 0.75rem;
+}
+.artistas-slideshow .next {
+  right: 0.75rem;
+}
+.artistas-slideshow .prev:hover,
+.artistas-slideshow .next:hover {
+  background: rgba(0, 0, 0, 0.55);
+  border-color: var(--text-hover);
+}
+
+.artistas-slideshow .dots {
+  text-align: center;
+  margin-top: 0.8rem;
+}
+.artistas-slideshow .dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 4px;
+  background-color: #444;
+  border-radius: 50%;
+  display: inline-block;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.artistas-slideshow .dot:hover {
+  transform: scale(1.2);
+}
+.artistas-slideshow .active {
+  background-color: var(--text-hover);
+}
+
+.artistas-slideshow .fade {
+  animation: artistasFade 1s ease;
+}
+@keyframes artistasFade {
+  from {
+    opacity: 0.25;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .tickets-grid {
@@ -503,6 +582,9 @@ header.is-scrolled {
   }
 }
 @media (max-width: 768px) {
+  .artistas-slideshow .mySlides img {
+    height: 55vh;
+  }
   .memories-grid {
     grid-template-columns: 1fr;
   }
