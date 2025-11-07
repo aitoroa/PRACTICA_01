@@ -154,7 +154,7 @@ header.is-scrolled {
 
 .hero-video {
   position: relative;
-  height: 100vh;
+  height: 96vh;
   width: 100%;
   display: grid;
   place-items: center;
@@ -385,6 +385,7 @@ header.is-scrolled {
 
 .site-footer p {
   margin: 0.25rem 0;
+  font-weight: 600;
   color: var(--text-hover);
   font-size: 1.25rem;
 }
