@@ -183,3 +183,51 @@ handleScroll();
     }
   });
 })();
+
+(function () {
+  const modal = document.querySelector("#modalWindow");
+  const buyBtn = document.querySelector("#buyBtn");
+  const closeX = modal?.querySelector(".close");
+  const closeMain = modal?.querySelector("#closeModal");
+
+  if (!modal || !buyBtn) return;
+
+  function openModalWindow() {
+    modal.classList.add("show-modal");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function closeModalWindow() {
+    modal.classList.remove("show-modal");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  buyBtn.addEventListener("click", (e) => {
+    if (buyBtn.hasAttribute("disabled")) return;
+  });
+
+  const form = document.getElementById("ticketsForm");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (buyBtn.disabled) return;
+      openModalWindow();
+    });
+  }
+
+  closeX?.addEventListener("click", closeModalWindow);
+  closeMain?.addEventListener("click", closeModalWindow);
+
+  window.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      closeModalWindow();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("show-modal")) {
+      closeModalWindow();
+    }
+  });
+})();

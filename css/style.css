@@ -446,7 +446,7 @@ header.is-scrolled {
   accent-color: var(--text-hover);
 }
 .tf-option-box {
-  background: #3d3d3d;
+  background: #252525;
   border: 1px solid #242424;
   border-radius: 12px;
   padding: 0.7rem 0.9rem;
@@ -518,7 +518,7 @@ header.is-scrolled {
 }
 .tf-row input,
 .tf-row select {
-  background: #3d3d3d;
+  background: #252525;
   color: var(--text-color);
   border: 1px solid #242424;
   border-radius: 10px;
@@ -540,7 +540,7 @@ header.is-scrolled {
 }
 
 .tf-summary {
-  background: #3d3d3d;
+  background: #252525;
   border: 1px solid #242424;
   border-radius: 12px;
   padding: 0.9rem;
@@ -556,8 +556,21 @@ header.is-scrolled {
   border-top: 1px dashed #2a2a2a;
   margin-top: 0.4rem;
   padding-top: 0.6rem;
+  color: var(--text-hover);
   font-size: 1.1rem;
 }
+
+input[value="sencilla"]:checked + .tf-option-box strong {
+  color: var(--text-hover);
+}
+input[value="vip"]:checked + .tf-option-box strong {
+  color: var(--text-hover);
+}
+
+.tf-option-box .tf-price {
+  color: var(--text-hover);
+}
+
 .tf-terms {
   gap: 0.6rem;
 }
@@ -569,6 +582,65 @@ header.is-scrolled {
 .tf-feedback {
   color: #9fe29f;
   margin: 0.25rem 0 0;
+}
+
+#modalWindow {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(2px);
+}
+#modalWindow.show-modal {
+  display: grid;
+  place-items: center;
+}
+
+#modalWindow .modal-content {
+  width: min(520px, 92vw);
+  background: #0f0f0f;
+  border: 1px solid #242424;
+  border-radius: 16px;
+  padding: 1.25rem 1.25rem 1rem;
+  color: var(--text-color);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  position: relative;
+  text-align: left;
+}
+#modalWindow .modal-content h3 {
+  margin: 0 0 0.5rem;
+  font-weight: 900;
+  color: #9fe29f;
+}
+#modalWindow .modal-content p {
+  margin: 0 0 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+#modalWindow .close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.6rem;
+  width: 44px;
+  height: 44px;
+  font-size: 1.8rem;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #1b1b1b;
+  color: var(--text-color);
+  border: 1px solid #2a2a2a;
+  cursor: pointer;
+}
+#modalWindow .close:hover {
+  border-color: var(--text-hover);
+}
+
+#closeModal {
+  float: right;
 }
 
 .btn {
