@@ -240,3 +240,32 @@ handleScroll();
     }
   });
 })();
+
+(function () {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = form.querySelector("#name");
+    const email = form.querySelector("#email");
+    const message = form.querySelector("#message");
+
+    if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+      alert("Por favor, rellena todos los campos.");
+      return;
+    }
+
+    const emailRegex = /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/;
+    if (!emailRegex.test(email.value)) {
+      alert("Por favor, introduce un correo electrónico válido.");
+      return;
+    }
+
+    alert("¡Gracias por tu mensaje! Nos pondremos en contacto pronto.");
+    form.reset();
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+})();
