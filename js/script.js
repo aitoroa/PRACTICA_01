@@ -76,3 +76,110 @@ handleScroll();
   container?.addEventListener("mouseenter", stopAutoSlide);
   container?.addEventListener("mouseleave", startAutoSlide);
 })();
+
+(function () {
+  const form = document.getElementById("ticketsForm");
+  if (!form) return;
+
+  const ticketRadios = form.querySelectorAll('input[name="ticketType"]');
+  const qtyInput = form.querySelector("#qty");
+  const dayRow = form.querySelector("#dayRow");
+  const extras = [
+    form.querySelector("#extraMerch"),
+    form.querySelector("#extraFastlane"),
+  ];
+  const subtotalEl = form.querySelector("#subtotal");
+  const taxEl = form.querySelector("#tax");
+  const totalEl = form.querySelector("#total");
+  const terms = form.querySelector("#terms");
+  const buyBtn = form.querySelector("#buyBtn");
+  const feedback = form.querySelector("#feedback");
+
+  const IVA = 0.21;
+
+  function getSelectedTicket() {
+    const r = [...ticketRadios].find((r) => r.checked);
+    const price = Number(r?.dataset.price || 0);
+    const type = r?.value || "sencilla";
+    return { price, type };
+  }
+
+  function getExtrasTotal() {
+    return extras.reduce(
+      (sum, el) => sum + (el?.checked ? Number(el.dataset.price || 0) : 0),
+      0
+    );
+  }
+
+  function formatEUR(n) {
+    return n.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
+  }
+
+  function toggleDayRow() {
+    const { type } = getSelectedTicket();
+    dayRow.style.display = type === "sencilla" ? "grid" : "none";
+  }
+
+  function recalc() {
+    const { price } = getSelectedTicket();
+    const qty = Math.max(1, Math.min(10, Number(qtyInput.value || 1)));
+    qtyInput.value = qty;
+
+    const extrasTotal = getExtrasTotal();
+    const base = (price + extrasTotal) * qty;
+    const tax = base * IVA;
+    const total = base + tax;
+
+    subtotalEl.textContent = formatEUR(base);
+    taxEl.textContent = formatEUR(tax);
+    totalEl.textContent = formatEUR(total);
+
+    buyBtn.disabled = !terms.checked;
+  }
+
+  ticketRadios.forEach((r) =>
+    r.addEventListener("change", () => {
+      toggleDayRow();
+      recalc();
+    })
+  );
+  qtyInput.addEventListener("input", recalc);
+  extras.forEach((e) => e?.addEventListener("change", recalc));
+  terms.addEventListener("change", () => {
+    buyBtn.disabled = !terms.checked;
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (buyBtn.disabled) return;
+    feedback.hidden = false;
+    feedback.textContent = "¡Gracias! Hemos registrado tu solicitud.";
+  });
+
+  toggleDayRow();
+  recalc();
+})();
+
+(function () {
+  const minusBtn = document.getElementById("minusBtn");
+  const plusBtn = document.getElementById("plusBtn");
+  const qtyInput = document.getElementById("qty");
+
+  if (!minusBtn || !plusBtn || !qtyInput) return;
+
+  minusBtn.addEventListener("click", () => {
+    let current = Number(qtyInput.value);
+    if (current > Number(qtyInput.min)) {
+      qtyInput.value = current - 1;
+      qtyInput.dispatchEvent(new Event("input"));
+    }
+  });
+
+  plusBtn.addEventListener("click", () => {
+    let current = Number(qtyInput.value);
+    if (current < Number(qtyInput.max)) {
+      qtyInput.value = current + 1;
+      qtyInput.dispatchEvent(new Event("input"));
+    }
+  });
+})();

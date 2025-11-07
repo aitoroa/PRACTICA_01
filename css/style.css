@@ -408,36 +408,169 @@ header.is-scrolled {
   }
 }
 
-.tickets-grid {
-  max-width: 1000px;
+.entradas-section .tickets-form {
+  max-width: 780px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  padding: 0 1rem;
-}
-.ticket-card {
-  background: #0f0f0f;
+  background: var(--background-nav);
   border: 1px solid #242424;
   border-radius: 16px;
   padding: 1.25rem;
-}
-.ticket-type {
-  margin: 0 0 0.25rem;
-  font-weight: 800;
+  display: grid;
+  gap: 1.1rem;
+  font-weight: 600;
   color: var(--text-color);
 }
-.ticket-price {
-  margin: 0.2rem 0 0.8rem;
-  font-size: 1.8rem;
+
+.tf-fieldset {
+  border: 1px solid var(--text-hover);
+  border-radius: 14px;
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+}
+.tf-legend {
+  padding: 0 0.4rem;
+  color: var(--text-color);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.tf-option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.6rem;
+}
+.tf-option input {
+  accent-color: var(--text-hover);
+}
+.tf-option-box {
+  background: #3d3d3d;
+  border: 1px solid #242424;
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.tf-option-box strong {
   font-weight: 900;
+}
+.tf-option-box small {
+  color: var(--text-color);
+}
+.tf-price {
   color: var(--text-hover);
+  font-weight: 900;
 }
-.ticket-features {
-  margin: 0 0 1rem;
-  padding-left: 1.1rem;
-  color: #cfcfcf;
+
+.tf-qty-row {
+  display: grid;
+  gap: 0.5rem;
 }
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.qty-btn {
+  width: 40px;
+  height: 40px;
+  background: #1b1b1b;
+  border: 1px solid #2a2a2a;
+  color: var(--text-color);
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qty-btn:hover {
+  background: var(--text-hover);
+  color: #111;
+  border-color: var(--text-hover);
+}
+
+.qty-control input {
+  width: 60px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  background: #121212;
+  border: 1px solid #242424;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.tf-row {
+  display: grid;
+  gap: 0.35rem;
+}
+.tf-row label {
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+.tf-row input,
+.tf-row select {
+  background: #3d3d3d;
+  color: var(--text-color);
+  border: 1px solid #242424;
+  border-radius: 10px;
+  padding: 0.6rem 0.7rem;
+  outline: none;
+}
+.tf-row input:focus,
+.tf-row select:focus {
+  border-color: var(--text-hover);
+}
+
+.tf-extras .tf-check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.tf-check input {
+  accent-color: var(--text-hover);
+}
+
+.tf-summary {
+  background: #3d3d3d;
+  border: 1px solid #242424;
+  border-radius: 12px;
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.4rem;
+}
+.tf-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tf-summary-row.tf-total {
+  border-top: 1px dashed #2a2a2a;
+  margin-top: 0.4rem;
+  padding-top: 0.6rem;
+  font-size: 1.1rem;
+}
+.tf-terms {
+  gap: 0.6rem;
+}
+#buyBtn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tf-feedback {
+  color: #9fe29f;
+  margin: 0.25rem 0 0;
+}
+
 .btn {
   display: inline-block;
   text-decoration: none;
@@ -591,8 +724,13 @@ header.is-scrolled {
   .program-grid {
     grid-template-columns: 1fr;
   }
-  .tickets-grid {
-    grid-template-columns: 1fr;
+  .entradas-section .tickets-form {
+    padding: 1rem;
+  }
+  .tf-option-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
   }
   .sponsors-grid {
     grid-template-columns: repeat(2, 1fr);

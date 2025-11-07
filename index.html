@@ -194,31 +194,123 @@
       </div>
     </section>
 
-    <section id="entradas" class="section-wrap">
-      <div class="tickets-grid">
-        <article class="ticket-card">
-          <h3 class="ticket-type">Sencilla</h3>
-          <p class="ticket-price">35€</p>
-          <ul class="ticket-features">
-            <li>Acceso 1 día</li>
-            <li>Escenarios principales</li>
-            <li>Merch oficial (10% dto.)</li>
-          </ul>
-          <a class="btn" href="#" aria-disabled="false">Comprar</a>
-        </article>
+    <section id="entradas" class="section-wrap entradas-section">
+      <form id="ticketsForm" class="tickets-form" novalidate>
+        <fieldset class="tf-fieldset">
+          <legend class="tf-legend">Tipo de entrada</legend>
 
-        <article class="ticket-card">
-          <h3 class="ticket-type">VIP</h3>
-          <p class="ticket-price">95€</p>
-          <ul class="ticket-features">
-            <li>Acceso 3 días</li>
-            <li>Zona preferente</li>
-            <li>Backstage tour</li>
-          </ul>
-          <a class="btn btn--gold" href="#" aria-disabled="false">Comprar</a>
-        </article>
-      </div>
+          <label class="tf-option">
+            <input
+              type="radio"
+              name="ticketType"
+              value="sencilla"
+              data-price="35"
+              checked
+            />
+            <span class="tf-option-box">
+              <strong>Sencilla</strong>
+              <small>Acceso 1 día</small>
+              <em class="tf-price">35€</em>
+            </span>
+          </label>
+
+          <label class="tf-option">
+            <input type="radio" name="ticketType" value="vip" data-price="95" />
+            <span class="tf-option-box">
+              <strong>VIP</strong>
+              <small>Acceso 3 días · Zona preferente</small>
+              <em class="tf-price">95€</em>
+            </span>
+          </label>
+        </fieldset>
+
+        <div class="tf-row" id="dayRow">
+          <label for="daySelect">Día</label>
+          <select id="daySelect" name="daySelect">
+            <option value="2025-07-12">Jueves 12 · Jul</option>
+            <option value="2025-07-13">Viernes 13 · Jul</option>
+            <option value="2025-07-14">Sábado 14 · Jul</option>
+          </select>
+        </div>
+
+        <div class="tf-row tf-qty-row">
+          <label for="qty">Cantidad</label>
+          <div class="qty-control">
+            <button
+              type="button"
+              class="qty-btn"
+              id="minusBtn"
+              aria-label="Disminuir entradas"
+            >
+              −
+            </button>
+            <input
+              id="qty"
+              name="qty"
+              type="number"
+              min="1"
+              max="10"
+              step="1"
+              value="1"
+              readonly
+            />
+            <button
+              type="button"
+              class="qty-btn"
+              id="plusBtn"
+              aria-label="Aumentar entradas"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <fieldset class="tf-fieldset tf-extras">
+          <legend class="tf-legend">Extras (opcionales)</legend>
+
+          <label class="tf-check">
+            <input type="checkbox" id="extraMerch" data-price="12" />
+            <span
+              >Pack Merch (camiseta + tote) <em class="tf-price">+12€</em></span
+            >
+          </label>
+
+          <label class="tf-check">
+            <input type="checkbox" id="extraFastlane" data-price="6" />
+            <span>Acceso rápido <em class="tf-price">+6€</em></span>
+          </label>
+        </fieldset>
+
+        <div class="tf-summary">
+          <div class="tf-summary-row">
+            <span>Subtotal</span>
+            <strong id="subtotal">0,00€</strong>
+          </div>
+          <div class="tf-summary-row">
+            <span>IVA (21%)</span>
+            <strong id="tax">0,00€</strong>
+          </div>
+          <div class="tf-summary-row tf-total">
+            <span>Total</span>
+            <strong id="total">0,00€</strong>
+          </div>
+        </div>
+
+        <label class="tf-check tf-terms">
+          <input type="checkbox" id="terms" />
+          <span>Acepto los términos y condiciones</span>
+        </label>
+
+        <button type="submit" class="btn btn--gold" id="buyBtn" disabled>
+          Comprar
+        </button>
+
+        <p class="tf-feedback" id="feedback" hidden>
+          ¡Gracias! Hemos registrado tu solicitud.
+        </p>
+      </form>
     </section>
+
     <section id="recuerdos" class="section-wrap">
       <div class="memories-grid">
         <img
