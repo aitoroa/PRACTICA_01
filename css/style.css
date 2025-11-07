@@ -251,22 +251,50 @@ header.is-scrolled {
   gap: 1rem;
   padding: 0 1rem;
 }
+
 .program-card {
   background: #0f0f0f;
-  border: 1px solid #242424;
+  border: 1px solid var(--background-nav);
   border-radius: 16px;
   padding: 1rem 1.25rem;
-  min-height: 120px;
-  display: grid;
-  gap: 0.3rem;
+  min-height: 85px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.program-card:hover {
+  animation: pulseGlow 0.6s ease-in-out 1;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(248, 200, 78, 0);
+    border-color: var(--background-nav);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px var(--text-hover);
+    border-color: var(--text-hover);
+  }
+}
+
 .program-day {
+  font-size: 1.3rem;
   margin: 0;
   font-family: "Epilogue", sans-serif;
   font-weight: 800;
   color: var(--text-color);
 }
+
 .program-date {
+  font-size: 1.3rem;
   color: var(--text-hover);
   font-weight: 900;
   letter-spacing: 0.5px;
