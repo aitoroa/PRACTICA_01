@@ -1,3 +1,5 @@
+/* VARIABLES */
+
 :root {
   --background-nav: #101010;
   --text-color: Whitesmoke;
@@ -14,6 +16,8 @@ body {
   font-weight: 900;
   font-style: normal;
 }
+
+/* HEADER / NAV (sticky + cristal) */
 
 header {
   display: flex;
@@ -97,6 +101,8 @@ header.is-scrolled {
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
+/* SECCIONES GENERALES */
+
 .section-wrap {
   padding: clamp(2rem, 4vw, 3rem) 1rem;
 }
@@ -116,6 +122,8 @@ header.is-scrolled {
   color: #bdbdbd;
   margin: 0;
 }
+
+/* HERO VIDEO */
 
 .hero-video {
   position: relative;
@@ -308,7 +316,7 @@ header.is-scrolled {
   bottom: 0;
   padding: 0.8rem 1rem;
   text-align: center;
-  color: var(--text-color);
+  color: var(--text-hover);
   font-weight: 800;
   letter-spacing: 0.3px;
 }
@@ -803,6 +811,8 @@ textarea {
 .site-footer a:hover {
   color: var(--text-hover);
 }
+
+/* RESPONSIVE */
 
 @media (max-width: 1024px) {
   .program-grid {
