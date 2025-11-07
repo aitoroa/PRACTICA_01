@@ -168,7 +168,8 @@ header.is-scrolled {
   object-fit: cover;
   filter: saturate(110%);
 }
-.hero-video__overlay {
+
+/* .hero-video__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -192,6 +193,54 @@ header.is-scrolled {
 .hero-video__caption p {
   margin: 0.3rem 0 0;
   color: #d4d4d4;
+} */
+
+.section-elfestival {
+  background-color: #0a0a0a;
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.festival-content {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.festival-text {
+  color: var(--text-color);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.festival-text h2 {
+  font-family: "Epilogue", sans-serif;
+  color: var(--text-hover);
+  font-weight: 900;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.festival-text p {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.festival-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .program-grid {
@@ -424,9 +473,6 @@ header.is-scrolled {
   .program-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .tickets-grid {
-    grid-template-columns: 1fr;
-  }
 }
 @media (max-width: 768px) {
   .memories-grid {
@@ -448,5 +494,22 @@ header.is-scrolled {
   }
   .footer-socials {
     gap: 1.2rem;
+  }
+  .festival-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .festival-text {
+    text-align: justify;
+  }
+
+  .festival-image {
+    margin-top: 2rem;
+  }
+
+  .festival-image img {
+    max-height: 500px;
+    object-fit: cover;
   }
 }
