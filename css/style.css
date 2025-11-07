@@ -1,5 +1,5 @@
 :root {
-  --background-nav: black;
+  --background-nav: #101010;
   --text-color: Whitesmoke;
   --text-hover: #ff5500;
   --background-color: #04007c;
@@ -31,6 +31,14 @@ header {
 .logo img {
   height: 40px;
   width: auto;
+}
+
+#festival,
+#programa,
+#artistas,
+#entradas,
+#recuerdos {
+  scroll-margin-top: 77px;
 }
 
 nav ul {
@@ -310,21 +318,74 @@ header.is-scrolled {
 
 .site-footer {
   margin-top: 2rem;
-  padding: 8rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 3rem 1rem;
   border-top: 1px solid #242424;
   background: var(--background-nav);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7rem;
 }
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.sponsors-grid img {
+  width: 150px;
+  height: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sponsors-grid img:nth-child(3) {
+  height: 100px;
+  width: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sponsors-grid img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.footer-socials a {
+  color: var(--text-color);
+  font-size: 1.8rem;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.footer-socials a:hover {
+  color: var(--text-hover);
+  transform: scale(1.05);
+}
+
 .site-footer p {
   margin: 0.25rem 0;
   color: var(--text-hover);
+  font-size: 1.25rem;
 }
 .site-footer a {
+  font-weight: 500;
   color: var(--text-color);
+  font-size: 1.25rem;
   text-decoration: none;
   margin-right: 0.75rem;
 }
@@ -342,14 +403,23 @@ header.is-scrolled {
 }
 @media (max-width: 768px) {
   .memories-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-}
-@media (max-width: 520px) {
   .program-grid {
     grid-template-columns: 1fr;
   }
-  .memories-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .tickets-grid {
+    grid-template-columns: 1fr;
+  }
+  .sponsors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
+  .sponsors-grid img {
+    width: 90px;
+  }
+  .footer-socials {
+    gap: 1.2rem;
   }
 }
