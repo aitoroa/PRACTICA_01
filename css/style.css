@@ -28,6 +28,12 @@ header {
   z-index: 1000;
 }
 
+header.is-scrolled {
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .logo img {
   height: 40px;
   width: auto;
@@ -327,7 +333,7 @@ header.is-scrolled {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 7rem;
+  gap: 6rem;
 }
 
 .sponsors-grid {
