@@ -1,3 +1,12 @@
+let burger = document.querySelector(".burger > i");
+let menu_opt = document.querySelector(".menu");
+
+burger.addEventListener("click", function () {
+  burger.classList.toggle("fa-bars");
+  burger.classList.toggle("fa-times");
+  menu_opt.classList.toggle("menu-show");
+});
+
 const headerEl = document.querySelector("header");
 
 function handleScroll() {
